@@ -21,7 +21,7 @@ export async function action({ request, params }: ActionProps) {
   };
   // console.log('new wallet:', newWallet);
   const responce = await fetch(
-    `https://https://wallet-keeper-9sgo.vercel.app/wallet/new`,
+    `https://wallet-keeper-9sgo.vercel.app/wallet/new`,
     {
       method: method,
       headers: {
