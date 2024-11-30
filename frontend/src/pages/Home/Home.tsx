@@ -19,7 +19,7 @@ export async function action({ request, params }: ActionProps) {
     wallet: data.wallet,
     person: data.person,
   };
-  console.log('new wallet:', newWallet);
+  // console.log('new wallet:', newWallet);
   const responce = await fetch(`http://localhost:8080/wallet/new`, {
     method: method,
     headers: {
@@ -30,5 +30,5 @@ export async function action({ request, params }: ActionProps) {
   if (!responce.ok) {
     throw new Error('Cannot add wallet');
   }
-  return redirect('/wallets');
+  return redirect('wallets');
 }

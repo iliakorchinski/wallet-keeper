@@ -8,6 +8,9 @@ const walletRoutes = require('./routes/walletRoutes');
 const cors = require('cors');
 
 const app = express();
+
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -15,8 +18,6 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-
-app.use(cors());
 
 app.use(walletRoutes);
 
