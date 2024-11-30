@@ -20,13 +20,16 @@ export async function action({ request, params }: ActionProps) {
     person: data.person,
   };
   // console.log('new wallet:', newWallet);
-  const responce = await fetch(`http://localhost:8080/wallet/new`, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(newWallet),
-  });
+  const responce = await fetch(
+    `http://https://wallet-keeper-9sgo.vercel.app/wallet/new`,
+    {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newWallet),
+    }
+  );
   if (!responce.ok) {
     throw new Error('Cannot add wallet');
   }
