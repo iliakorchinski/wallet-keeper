@@ -16,6 +16,7 @@ function Wallets() {
           <div key={wallet._id}>
             <h3>{wallet.person}</h3>
             <p>{wallet.wallet}</p>
+            <button>Delete</button>
           </div>
         );
       })}
