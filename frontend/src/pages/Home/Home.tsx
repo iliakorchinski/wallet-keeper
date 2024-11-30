@@ -23,6 +23,7 @@ export async function action({ request, params }: ActionProps) {
   const responce = await fetch(
     `https://wallet-keeper-gilt.vercel.app/wallet/new`,
     {
+      mode: 'no-cors',
       method: method,
       headers: {
         'Content-Type': 'application/json',
