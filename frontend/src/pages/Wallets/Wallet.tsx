@@ -28,7 +28,7 @@ export default Wallets;
 
 export async function loader() {
   const responce = await fetch(
-    'http://https://wallet-keeper-9sgo.vercel.app/wallets'
+    'https://https://wallet-keeper-9sgo.vercel.app/wallets'
   );
   console.log(responce);
   if (!responce.ok) {
