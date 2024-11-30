@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router';
-
+import { ChangeEvent, useState } from 'react';
+import classes from './Wallet.module.css';
 type Wallet = {
   _id: string;
   person: string;
@@ -7,19 +8,42 @@ type Wallet = {
 };
 
 function Wallets() {
+  const [search, setSearch] = useState<string>('');
   const data = useLoaderData();
   console.log(data);
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const filterredData = data.filter((wallet: Wallet) => {
+    return wallet.wallet.includes(search);
+  });
+
   return (
     <>
-      {data.map((wallet: Wallet) => {
-        return (
-          <div key={wallet._id}>
-            <h3>{wallet.person}</h3>
-            <p>{wallet.wallet}</p>
-            <button>Delete</button>
-          </div>
-        );
-      })}
+      <input
+        placeholder="search wallet"
+        value={search}
+        onChange={handleSearch}
+        className={classes.search}
+      />
+
+      {filterredData &&
+        filterredData.map((wallet: Wallet) => {
+          return (
+            <div key={wallet._id} className={classes.container}>
+              <h3 className={classes.person}>
+                От Кого:
+                <br /> {wallet.person}
+              </h3>
+              <p className={classes.person}>
+                Номер кошелька: <br /> {wallet.wallet}
+              </p>
+              <button>Delete</button>
+            </div>
+          );
+        })}
     </>
   );
 }
@@ -28,7 +52,6 @@ export default Wallets;
 
 export async function loader() {
   const responce = await fetch('https://wallet-keeper-gilt.vercel.app/wallets');
-  console.log(responce);
   if (!responce.ok) {
     throw new Error('Could not fetch wallets');
   } else {
