@@ -7,7 +7,7 @@ exports.addWallet = async (req, res, next) => {
   await wallet
     .save()
     .then((wallet) => {
-      res.redirect('/');
+      res.redirect('/wallets');
     })
     .catch((err) => console.log(err));
 };
