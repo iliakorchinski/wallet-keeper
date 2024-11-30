@@ -1,0 +1,21 @@
+.search {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+.container {
+  background: -webkit-linear-gradient(90deg, #d1d1cc, #dcdddb, #d1d1cc);
+  display: flex;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 10px;
+  flex-direction: column;
+  border: 3px solid rgb(149, 192, 76);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.person::first-line {
+  color: rgb(28, 94, 88);
+}
