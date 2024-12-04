@@ -19,3 +19,8 @@
 .person::first-line {
   color: rgb(28, 94, 88);
 }
+@media (max-width: 420px) {
+  .container {
+    width: 80%;
+  }
+}
