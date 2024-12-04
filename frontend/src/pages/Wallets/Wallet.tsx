@@ -1,7 +1,9 @@
 import { useLoaderData } from 'react-router';
 import { ChangeEvent, useState } from 'react';
 import classes from './Wallet.module.css';
-type Wallet = {
+import { Link } from 'react-router';
+
+export type Wallet = {
   _id: string;
   person: string;
   wallet: string;
@@ -40,7 +42,7 @@ function Wallets() {
               <p className={classes.person}>
                 Номер кошелька: <br /> {wallet.wallet}
               </p>
-              <button>Delete</button>
+              <Link to={`/wallets/${wallet._id}`}>Details</Link>
             </div>
           );
         })}
