@@ -1,11 +1,15 @@
 const express = require('express');
 
+// const path = require('path');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const walletRoutes = require('./routes/walletRoutes');
 
 const cors = require('cors');
+const db = process.env.MONGODB_URI;
 
 const app = express();
 
@@ -28,9 +32,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    'mongodb+srv://kortchinskii:xByr4XonlNvIwg6W@cluster0.kxna2.mongodb.net/'
-  )
+  .connect(db)
   .then(() => {
     app.listen(8080, () => {
       console.log('Connected!');

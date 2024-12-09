@@ -1,15 +1,15 @@
-import { useLoaderData, useParams } from 'react-router';
-import { redirect } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
 import { Wallet } from './Wallets/Wallet';
 export default function WalletsDetails() {
   const data = useLoaderData();
+  const navigate = useNavigate();
   console.log(data);
   const params = useParams();
   const handleDelete = async (id: string | undefined) => {
     const selectedWallet = data.find((wallet: Wallet) => {
       return wallet._id === id;
     });
-    console.log(selectedWallet);
+
     const removeWallet = {
       wallet: selectedWallet.wallet,
       person: selectedWallet.person,
@@ -28,13 +28,16 @@ export default function WalletsDetails() {
     if (!responce.ok) {
       throw new Error('Could not delete wallet');
     }
+    console.log(responce);
 
-    return redirect('/wallets');
+    return navigate('/wallets');
   };
   return (
     <>
       <h1>{params.id}</h1>
-      <button onClick={() => handleDelete(params.id)}>Delete</button>
+      <button onClick={() => handleDelete(params.id)}>
+        А теперь можешь удалить
+      </button>
     </>
   );
 }

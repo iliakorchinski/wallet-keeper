@@ -36,7 +36,6 @@ exports.getWallets = async (req, res, next) => {
 exports.deleteWallet = async (req, res, next) => {
   const id = req.params.id;
   console.log(id);
-  return await Wallet.findByIdAndDelete(id).then(() =>
-    res.redirect('/wallets')
-  );
+  await Wallet.findByIdAndDelete(id);
+  res.redirect('/wallets');
 };

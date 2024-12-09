@@ -19,7 +19,7 @@ function Wallets() {
   };
 
   const filterredData = data.filter((wallet: Wallet) => {
-    return wallet.wallet.includes(search);
+    return wallet.wallet.includes(search) || wallet.person.includes(search);
   });
 
   return (
@@ -42,7 +42,9 @@ function Wallets() {
               <p className={classes.person}>
                 Номер кошелька: <br /> {wallet.wallet}
               </p>
-              <Link to={`/wallets/${wallet._id}`}>Details</Link>
+              <Link to={`/wallets/${wallet._id}`}>
+                Нажми, если хочешь удалить
+              </Link>
             </div>
           );
         })}
