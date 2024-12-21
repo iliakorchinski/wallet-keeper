@@ -12,6 +12,11 @@ const walletSchema = new Schema({
     type: String,
     required: true,
   },
+
+  walletType: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('Wallet', walletSchema);

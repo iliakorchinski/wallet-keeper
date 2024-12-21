@@ -15,11 +15,13 @@ type ActionProps = {
 export async function action({ request, params }: ActionProps) {
   const method = request.method;
   const data = Object.fromEntries(await request.formData());
+  // console.log(data);
   const newWallet = {
     wallet: data.wallet,
     person: data.person,
+    walletType: data.walletType,
   };
-  // console.log('new wallet:', newWallet);
+  console.log('new wallet:', newWallet);
   const responce = await fetch(
     `https://wallet-keeper-gilt.vercel.app/wallet/new`,
     {
@@ -33,5 +35,6 @@ export async function action({ request, params }: ActionProps) {
   if (!responce.ok) {
     throw new Error('Cannot add wallet');
   }
+  console.log(responce);
   return redirect('wallets');
 }

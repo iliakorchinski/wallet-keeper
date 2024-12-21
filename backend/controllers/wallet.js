@@ -3,6 +3,7 @@ const Wallet = require('../models/wallet');
 exports.addWallet = async (req, res, next) => {
   try {
     const data = req.body;
+    console.log(data);
 
     const existingWallet = await Wallet.findOne({ wallet: data.wallet });
     if (existingWallet) {
@@ -11,6 +12,7 @@ exports.addWallet = async (req, res, next) => {
       });
     }
     const wallet = new Wallet(data);
+    console.log(wallet);
 
     await wallet.save();
     res.redirect('/wallets');

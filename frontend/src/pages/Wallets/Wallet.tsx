@@ -7,6 +7,7 @@ export type Wallet = {
   _id: string;
   person: string;
   wallet: string;
+  walletType: string | undefined;
 };
 
 function Wallets() {
@@ -42,6 +43,7 @@ function Wallets() {
               <p className={classes.person}>
                 Номер кошелька: <br /> {wallet.wallet}
               </p>
+              <p>Тип кошелька: {wallet.walletType ? wallet.walletType : ''}</p>
               <Link to={`/wallets/${wallet._id}`}>
                 Нажми, если хочешь удалить
               </Link>
