@@ -20,7 +20,11 @@ function Wallets() {
   };
 
   const filterredData = data.filter((wallet: Wallet) => {
-    return wallet.wallet.includes(search) || wallet.person.includes(search);
+    return (
+      wallet.wallet.includes(search) ||
+      wallet.person.includes(search) ||
+      wallet.walletType?.includes(search)
+    );
   });
 
   return (
